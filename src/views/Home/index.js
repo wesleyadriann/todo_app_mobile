@@ -1,23 +1,33 @@
 import React from 'react';
-import {ScrollView, Text} from 'react-native';
+import {ScrollView, Text, TouchableOpacity} from 'react-native';
 
-import {Container, ContainerItem, Card} from './style';
+import {Container, Card} from './style';
 
 import {tasks} from '../../utils/tasks';
 
-const Home = () => (
-  <Container>
-    <ScrollView>
-      {tasks.map(task => (
-        <Card>
-          <Text>{task.name}</Text>
-          <Text>{task.description}</Text>
-          <Text>{task.type}</Text>
-          <Text>{task.priority}</Text>
-        </Card>
-      ))}
-    </ScrollView>
-  </Container>
-);
+const Home = ({navigation}) => {
+  const moveScreen = task => {
+    navigation.push('Task', {
+      task,
+    });
+  };
+
+  return (
+    <Container>
+      <ScrollView>
+        {tasks.map((task, i) => (
+          <TouchableOpacity onPress={() => moveScreen(task)}>
+            <Card key={i}>
+              <Text>Nome: {task.name} </Text>
+              {/* <Text>{task.description}</Text> */}
+              <Text>Tipo: {task.type} </Text>
+              <Text>Prioridade: {task.priority} </Text>
+            </Card>
+          </TouchableOpacity>
+        ))}
+      </ScrollView>
+    </Container>
+  );
+};
 
 export default Home;
