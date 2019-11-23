@@ -1,7 +1,7 @@
 export const tasks = [
   {
-    name: 'Comprar Café',
+    name: 'X',
     description: 'Ir ao mercado comprar café',
-    priority: 'baixa',
+    priority: 'low',
   },
 ];

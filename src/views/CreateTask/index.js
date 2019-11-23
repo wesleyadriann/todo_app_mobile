@@ -1,11 +1,13 @@
 import React from 'react';
 import {View, Text} from 'react-native';
 
+import {Container} from './styles';
+
 const CreateTask = () => {
   return (
-    <View>
+    <Container>
       <Text>CreateTask</Text>
-    </View>
+    </Container>
   );
 };
 

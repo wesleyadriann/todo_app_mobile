@@ -8,7 +8,6 @@ const Task = ({navigation}) => {
     <View>
       <Text>Nome: {task.name}</Text>
       <Text>Descrição: {task.description}</Text>
-      <Text>Tipo: {task.type}</Text>
       <Text>Prioridade: {task.priority}</Text>
     </View>
   );
