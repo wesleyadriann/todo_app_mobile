@@ -7,7 +7,7 @@ export const Container = styled.View`
   width: ${width}px;
   height: 100%;
   padding: 10px;
-  background: #5f5f5f;
+  background: #f5f5f5;
 `;
 
 export const Card = styled.View`
