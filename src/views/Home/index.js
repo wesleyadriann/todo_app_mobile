@@ -24,7 +24,8 @@ const Home = ({navigation}) => {
           <TouchableOpacity onPress={() => detailTask(task)}>
             <Card key={i}>
               <Text>{task.name}</Text>
-              <ImagePriority priority={task.priority}
+              <ImagePriority
+                priority={task.priority}
                 source={require('../../assets/images/uparrow.png')}
               />
             </Card>

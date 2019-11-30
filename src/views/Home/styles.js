@@ -3,19 +3,11 @@ import {Dimensions} from 'react-native';
 
 const {width} = Dimensions.get('window');
 
-import {colors} from '../../utils/colors';
-
-const filters = {
-  low: 'invert(55%) sepia(87%) saturate(634%) hue-rotate(192deg) brightness(104%) contrast(103%)',
-  medium: 'invert(84%) sepia(63%) saturate(2434%) hue-rotate(3deg) brightness(109%) contrast(107%)',
-  high: 'invert(14%) sepia(87%) saturate(7313%) hue-rotate(7deg) brightness(96%) contrast(122%)',
-};
-
 export const Container = styled.View`
   width: ${width}px;
   height: 100%;
   padding: 10px;
-  background: ${colors['f5f5f5']};
+  background: #5f5f5f;
 `;
 
 export const Card = styled.View`
@@ -32,7 +24,6 @@ export const Card = styled.View`
 export const ImagePriority = styled.Image`
   width: 20px;
   height: 20px;
-  /* filter: ${props => filters[props.priority]}; */
 `;
 
 export const ActionBar = styled.View`
@@ -44,6 +35,6 @@ export const ActionBar = styled.View`
 export const ButtonAdd = styled.TouchableOpacity`
   width: 60px;
   height: 60px;
-  background-color: ${colors['3b8ac4']};
+  background-color: #3b8ac4;
   border-radius: 100px;
 `;

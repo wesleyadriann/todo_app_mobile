@@ -4,9 +4,17 @@ import {createStackNavigator} from 'react-navigation-stack';
 import Home from './views/Home';
 import Task from './views/Task';
 import CreateTask from './views/CreateTask';
+import Login from './views/Login';
 
 const AppStack = createStackNavigator(
   {
+    Login: {
+      screen: Login,
+      path: 'Login',
+      navigationOptions: {
+        header: null,
+      }
+    },
     Home: {
       screen: Home,
       path: 'Home',
@@ -30,7 +38,7 @@ const AppStack = createStackNavigator(
     },
   },
   {
-    initialRouteName: 'Home',
+    initialRouteName: 'Login',
   },
 );
 
