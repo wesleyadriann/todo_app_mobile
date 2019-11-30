@@ -1,7 +1,9 @@
 import React from 'react';
+import {Alert} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
 
 import {handleChange} from '../../store/actions/auth';
+import {users} from '../../utils/data';
 
 import {
   Container,
@@ -12,12 +14,28 @@ import {
   TextButton,
 } from './styles';
 
-const Login = () => {
+const Login = ({navigation}) => {
   const dispatch = useDispatch();
   const user = useSelector(state => state.auth.user);
 
   const handleLogin = () => {
-    alert(JSON.stringify(user));
+    if (!(user.email || user.password)) {
+      return Alert.alert('Erro', 'Informe email e senha.', [{text: 'Ok'}]);
+    }
+    let index = '';
+    users.map((userData, i) => {
+      if (user.email === userData.email) {
+        index = i;
+      }
+    });
+    if (index === '') {
+      return Alert.alert('Erro', 'Email não encontrado.');
+    }
+    if (user.password === users[index].password) {
+      navigation.push('Home');
+    } else {
+      Alert.alert('Erro', 'Email ou senha invalidos.');
+    }
   };
 
   const onHandleChange = (text, name) => {
@@ -34,6 +52,7 @@ const Login = () => {
         />
         <InputLogin
           placeholder="Senha"
+          secureTextEntry
           onChangeText={text => onHandleChange(text, 'password')}
         />
         <ButtonLogin onPress={handleLogin}>
