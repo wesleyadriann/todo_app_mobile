@@ -1,5 +1,5 @@
 import React from 'react';
-import {Alert} from 'react-native';
+import {Alert, Text} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
 
 import {handleChange} from '../../store/actions/auth';
@@ -12,6 +12,7 @@ import {
   ButtonLogin,
   Title,
   TextButton,
+  TextTouch,
 } from './styles';
 
 const Login = ({navigation}) => {
@@ -58,6 +59,12 @@ const Login = ({navigation}) => {
         <ButtonLogin onPress={handleLogin}>
           <TextButton>Entrar</TextButton>
         </ButtonLogin>
+        <TextTouch>
+          <Text>Esqueceu a senha?</Text>
+        </TextTouch>
+        <TextTouch>
+          <Text>Cadastre-se</Text>
+        </TextTouch>
       </Row>
     </Container>
   );

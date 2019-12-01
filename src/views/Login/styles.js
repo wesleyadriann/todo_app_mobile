@@ -54,3 +54,7 @@ export const ButtonLogin = styled.TouchableOpacity`
 export const TextButton = styled.Text`
   color: #8e2de2;
 `;
+
+export const TextTouch = styled.TouchableOpacity`
+  margin-top: 10px;
+`;
