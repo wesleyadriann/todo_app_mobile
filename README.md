@@ -53,6 +53,10 @@ Open application in android emulator.
 
 - [Wesley Adriann](https://github.com/WesleyAdriann/)
 
+## URL Project Reference
+
+- [https://github.com/WesleyAdriann/todo_app](https://github.com/WesleyAdriann/todo_app)
+
 ## Observation
 
 For more information
