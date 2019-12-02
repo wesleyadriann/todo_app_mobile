@@ -49,10 +49,8 @@ const CreateAccount = ({navigation}) => {
               },
             ]);
           })
-          .catch(err => {
-            console.log(err);
-            console.log(err.code);
-            console.log(err.message);
+          .catch(() => {
+            throw new Error();
           });
       })
       .catch(err => {
