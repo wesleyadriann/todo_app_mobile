@@ -34,6 +34,7 @@ In the first time install the application in emulator
 react-native run-android
 ```
 Await for application open in android emulator.
+
 In others times only execute
 ```
 react-native start
