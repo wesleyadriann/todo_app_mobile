@@ -1,4 +1,5 @@
 import React from 'react';
+import {Alert} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
 
 import {handleChange} from '../../store/actions/auth';
@@ -20,6 +21,14 @@ const CreateAccount = () => {
     dispatch(handleChange(text, name));
   };
 
+  const handleCreate = () => {
+    if (!(user.email || user.password || user.name)) {
+      return Alert.alert('Erro', 'Informe email, nome e senha.', [
+        {text: 'Ok'},
+      ]);
+    }
+  };
+
   return (
     <Container source={require('../../assets/images/background.png')}>
       <Row>
@@ -37,7 +46,7 @@ const CreateAccount = () => {
           secureTextEntry
           onChangeText={text => onHandleChange(text, 'password')}
         />
-        <ButtonLogin>
+        <ButtonLogin onPress={handleCreate}>
           <TextButton>Cadastrar</TextButton>
         </ButtonLogin>
       </Row>
