@@ -2,6 +2,7 @@ import React from 'react';
 import {Alert} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
 import auth from '@react-native-firebase/auth';
+import database from '@react-native-firebase/database';
 
 import {handleChange} from '../../store/actions/auth';
 
@@ -32,16 +33,30 @@ const CreateAccount = ({navigation}) => {
     }
     auth()
       .createUserWithEmailAndPassword(user.email, user.password)
-      .then(() => {
-        Alert.alert('Sucesso', 'Sua conta foi criada com sucesso', [
-          {
-            text: 'Ok',
-            onPress: () => navigation.push('Login'),
-          },
-        ]);
+      .then(res => {
+        const ref = database().ref(`/users/${res.user._user.uid}`);
+        ref
+          .set({
+            uid: res.user._user.uid,
+            name: user.name,
+            tasks: [],
+          })
+          .then(() => {
+            Alert.alert('Sucesso', 'Sua conta foi criada com sucesso', [
+              {
+                text: 'Ok',
+                onPress: () => navigation.push('Login'),
+              },
+            ]);
+          })
+          .catch(err => {
+            console.log(err);
+            console.log(err.code);
+            console.log(err.message);
+          });
       })
       .catch(err => {
-        Alert.alert('Erro', errosAuth[err.code], [{text: 'Ok'}]);
+        Alert.alert('Erro', errosAuth[err.code || 'other'], [{text: 'Ok'}]);
       });
   };
 
