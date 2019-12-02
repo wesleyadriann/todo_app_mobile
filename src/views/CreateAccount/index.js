@@ -1,6 +1,7 @@
 import React from 'react';
 import {Alert} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
+import auth from '@react-native-firebase/auth';
 
 import {handleChange} from '../../store/actions/auth';
 
@@ -13,7 +14,9 @@ import {
   TextButton,
 } from './style';
 
-const CreateAccount = () => {
+import {errosAuth} from '../../utils/errors';
+
+const CreateAccount = ({navigation}) => {
   const dispatch = useDispatch();
   const user = useSelector(state => state.auth.user);
 
@@ -27,6 +30,19 @@ const CreateAccount = () => {
         {text: 'Ok'},
       ]);
     }
+    auth()
+      .createUserWithEmailAndPassword(user.email, user.password)
+      .then(() => {
+        Alert.alert('Sucesso', 'Sua conta foi criada com sucesso', [
+          {
+            text: 'Ok',
+            onPress: () => navigation.push('Login'),
+          },
+        ]);
+      })
+      .catch(err => {
+        Alert.alert('Erro', errosAuth[err.code], [{text: 'Ok'}]);
+      });
   };
 
   return (
