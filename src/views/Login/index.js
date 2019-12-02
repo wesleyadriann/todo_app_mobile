@@ -62,7 +62,7 @@ const Login = ({navigation}) => {
         <TextTouch>
           <Text>Esqueceu a senha?</Text>
         </TextTouch>
-        <TextTouch onPress={() => navigation.push('CreateAccount')}>
+        <TextTouch>
           <Text>Cadastre-se</Text>
         </TextTouch>
       </Row>

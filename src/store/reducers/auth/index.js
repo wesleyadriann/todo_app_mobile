@@ -4,7 +4,6 @@ const INITIAL_STATE = {
   user: {
     email: '',
     password: '',
-    name: '',
   },
 };
 
