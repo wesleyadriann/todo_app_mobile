@@ -5,9 +5,8 @@ const {width, height} = Dimensions.get('window');
 
 export const Container = styled.View`
   width: ${width}px;
-  height: ${height}px;
+  min-height: ${height}px;
   padding: 10px;
-  display: flex;
   justify-content: center;
   align-items: center;
   background-color: rgba(128, 128, 128, 0.1);

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Alert, Text} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
 import auth from '@react-native-firebase/auth';
@@ -17,6 +17,8 @@ import {
   TextTouch,
 } from './styles';
 
+import {errosAuth} from '../../utils/errors';
+
 const Login = ({navigation}) => {
   const dispatch = useDispatch();
   const user = useSelector(state => state.auth.user);
@@ -31,12 +33,21 @@ const Login = ({navigation}) => {
     auth()
       .signInWithEmailAndPassword(user.email, user.password)
       .then(res => {
-        console.log(res);
+        console.log(res.user._user.uid);
+        const ref = database().ref(`/users/${res.user._user.uid}`);
+        ref
+          .once('value')
+          .then(resp => {
+            console.log(resp._snapshot.value);
+          })
+          .catch(err => {
+            console.log(err);
+            console.log(err.message);
+            console.log(err.code);
+          });
       })
       .catch(err => {
-        console.log(err);
-        console.log(err.code);
-        console.log(err.message);
+        Alert.alert('Erro', errosAuth[err.code || 'other'], [{text: 'Ok'}]);
       })
       .finally(() => {
         dispatch(handleLoading(false));
