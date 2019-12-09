@@ -50,7 +50,7 @@ const CreateAccount = ({navigation}) => {
             ]);
           })
           .catch(() => {
-            throw new Error();
+            Alert.alert('Erro', errosAuth.other, [{text: 'Ok'}]);
           });
       })
       .catch(err => {

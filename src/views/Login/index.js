@@ -1,9 +1,10 @@
 import React from 'react';
 import {Alert, Text} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
+import auth from '@react-native-firebase/auth';
+import database from '@react-native-firebase/database';
 
 import {handleChange} from '../../store/actions/auth';
-import {users} from '../../utils/data';
 
 import {
   Container,
@@ -23,20 +24,32 @@ const Login = ({navigation}) => {
     if (!(user.email || user.password)) {
       return Alert.alert('Erro', 'Informe email e senha.', [{text: 'Ok'}]);
     }
-    let index = '';
-    users.map((userData, i) => {
-      if (user.email === userData.email) {
-        index = i;
-      }
-    });
-    if (index === '') {
-      return Alert.alert('Erro', 'Email não encontrado.');
-    }
-    if (user.password === users[index].password) {
-      navigation.push('Home');
-    } else {
-      Alert.alert('Erro', 'Email ou senha invalidos.');
-    }
+
+    auth()
+      .signInWithEmailAndPassword(user.email, user.password)
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => {
+        console.log(err);
+        console.log(err.code);
+        console.log(err.message);
+      });
+
+    // let index = '';
+    // users.map((userData, i) => {
+    //   if (user.email === userData.email) {
+    //     index = i;
+    //   }
+    // });
+    // if (index === '') {
+    //   return Alert.alert('Erro', 'Email não encontrado.');
+    // }
+    // if (user.password === users[index].password) {
+    //   navigation.push('Home');
+    // } else {
+    //   Alert.alert('Erro', 'Email ou senha invalidos.');
+    // }
   };
 
   const onHandleChange = (text, name) => {
