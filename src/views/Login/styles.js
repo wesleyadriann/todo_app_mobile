@@ -16,7 +16,6 @@ export const Row = styled.View`
   background-color: #fff;
   width: 85%;
   padding: 25px 0;
-
   display: flex;
   justify-content: center;
   align-items: center;

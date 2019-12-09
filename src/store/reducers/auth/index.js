@@ -6,6 +6,7 @@ const INITIAL_STATE = {
     password: '',
     name: '',
   },
+  loading: false,
 };
 
 function auth(state = INITIAL_STATE, action) {
@@ -17,6 +18,11 @@ function auth(state = INITIAL_STATE, action) {
           ...state.user,
           [action.name]: action.text,
         },
+      };
+    case actionTypes.HANDLELOADINGAUTH:
+      return {
+        ...state,
+        loading: action.status,
       };
     default:
       return state;

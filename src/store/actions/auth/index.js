@@ -7,3 +7,10 @@ export const handleChange = (text, name) => {
     text,
   };
 };
+
+export const handleLoading = status => {
+  return {
+    type: actionTypes.HANDLELOADINGAUTH,
+    status,
+  };
+};
