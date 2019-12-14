@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {Alert, Text} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
 import auth from '@react-native-firebase/auth';
@@ -33,7 +33,6 @@ const Login = ({navigation}) => {
     auth()
       .signInWithEmailAndPassword(user.email, user.password)
       .then(res => {
-        console.log(res.user._user.uid);
         const ref = database().ref(`/users/${res.user._user.uid}`);
         ref
           .once('value')
@@ -76,7 +75,7 @@ const Login = ({navigation}) => {
           <ButtonLogin onPress={handleLogin}>
             <TextButton>Entrar</TextButton>
           </ButtonLogin>
-          <TextTouch>
+          <TextTouch onPress={() => navigation.push('ForgotPassword')}>
             <Text>Esqueceu a senha?</Text>
           </TextTouch>
           <TextTouch onPress={() => navigation.push('CreateAccount')}>

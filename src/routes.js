@@ -6,6 +6,7 @@ import Task from './views/Task';
 import CreateTask from './views/CreateTask';
 import Login from './views/Login';
 import CreateAccount from './views/CreateAccount';
+import ForgotPassword from './views/ForgotPassword';
 
 const AppStack = createStackNavigator(
   {
@@ -19,6 +20,13 @@ const AppStack = createStackNavigator(
     CreateAccount: {
       screen: CreateAccount,
       path: 'CreateAccount',
+      navigationOptions: {
+        header: null,
+      },
+    },
+    ForgotPassword: {
+      screen: ForgotPassword,
+      path: 'ForgotPassword',
       navigationOptions: {
         header: null,
       },
