@@ -54,6 +54,10 @@ Open application in android emulator.
 
 - [Wesley Adriann](https://github.com/WesleyAdriann/)
 
+## Project Status
+
+- **development**
+
 ## URL Project Reference
 
 - [https://github.com/WesleyAdriann/todo_app](https://github.com/WesleyAdriann/todo_app)
